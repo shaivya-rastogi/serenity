@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Serenity - Helps you destress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<script>
+setTimeout(function() {
+  window.location.href = "Signup.html";
+}, 121000);
+</script>
+</head>
+
+<style>
+
+@font-face {
+    font-family: headingFont;
+    src: url("../fonts/Avenir.ttc");
+    font-weight: medium;
+}
+body {
+background: linear-gradient(
+                     rgba(74,74,74, .76), 
+                     rgba(74,74,74, .76)),
+                     url("../images/BG image.png");                     
+                     text-align: center;
+ 
+  font-weight: 100;
+}
+
+#first{
+	padding-top: 84px;
+
+	color: white;
+	font-size: 40px;
+	font-family: headingFont;
+}
+
+#second{
+padding-top: 24px;
+padding-left:10px;
+	padding-right:10px;
+	color: white;
+	font-size: 27px;
+	font-family: headingFont;
+}
+h2{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+padding-top: 156px;
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #00BF96;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #00816A;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+</style>
+
+<body>
+<div id = "first">Simply relax and take a deep breath.</div>
+
+<div id="clockdiv">
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+
+<div id="second">You can do this while sitting or standing.</div>
+
+<script>
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  return {
+    'total': t,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 1 * 1 * 100 * 1.2 * 1000);
+initializeClock('clockdiv', deadline);
+</script>
+
+
+
+</body>
+</html>
